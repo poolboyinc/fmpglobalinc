@@ -15,8 +15,8 @@ A modern Flutter application for event discovery and social networking.
 
 ### Prerequisites
 
-- Flutter (version X.X.X)
-- Dart (version X.X.X)
+- Flutter (version 3.0.0+)
+- Dart (version 3.0.0+)
 - Android Studio / VS Code
 - Firebase account
 - Google Maps API key
@@ -69,6 +69,5 @@ This repository contains proprietary and confidential information. The source co
 2. **No Derivative Works**: Modification, adaptation, or derivative works are strictly prohibited.
 3. **No Distribution**: Redistribution in any form is not permitted.
 
-All rights reserved. 
 
 ## I will be updating this frequently, still not finished! ##

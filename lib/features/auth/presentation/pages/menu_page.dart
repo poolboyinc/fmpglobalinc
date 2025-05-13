@@ -10,44 +10,35 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return Column(
-              children: [
-                const CustomSearchBar(),
-                const FilterChips(),
-                Expanded(
-                  child: SingleChildScrollView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minHeight: constraints.maxHeight - 120,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 20),
-                          _buildSection('Popping tonight 🔥'),
-                          _buildPartyList(context),
-                          const SizedBox(height: 20),
-                          _buildSection('Your favorites'),
-                          _buildPartyList(context),
-                          const SizedBox(height: 20),
-                          _buildSection('Nearby'),
-                          _buildPartyList(context),
-                          const SizedBox(height: 32),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
+    // No Scaffold here, just return the content
+    return Container(
+      color: Colors.black,
+      child: Column(
+        children: [
+          const CustomSearchBar(),
+          const FilterChips(),
+          Expanded(
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 20),
+                  _buildSection('Popping tonight 🔥'),
+                  _buildPartyList(context),
+                  const SizedBox(height: 20),
+                  _buildSection('Your favorites'),
+                  _buildPartyList(context),
+                  const SizedBox(height: 20),
+                  _buildSection('Nearby'),
+                  _buildPartyList(context),
+                  // Add extra bottom padding to account for nav bar
+                  const SizedBox(height: 80),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

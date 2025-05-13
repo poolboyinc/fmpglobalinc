@@ -1,6 +1,5 @@
-// lib/features/menu/presentation/widgets/bottom_nav_bar.dart
-import 'package:fmpglobalinc/core/config/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:fmpglobalinc/core/config/theme.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -14,42 +13,45 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60, // Fixed height
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.black,
-          boxShadow: [
-            BoxShadow(
-              color: AppTheme.primaryPurple.withOpacity(0.2),
-              blurRadius: 10,
-              offset: const Offset(0, -5),
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
+
+    return Container(
+      color: Colors.black,
+      height: kBottomNavigationBarHeight + bottomPadding,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: kBottomNavigationBarHeight,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _buildNavItem(0, Icons.explore, "Explore"),
+                _buildNavItem(1, Icons.local_fire_department, "Parties"),
+                _buildNavItem(2, Icons.calendar_today, "Calendar"),
+                _buildNavItem(3, Icons.person, "Profile"),
+              ],
             ),
-          ],
-        ),
-        child: BottomNavigationBar(
-          currentIndex: currentIndex,
-          onTap: onTap,
-          backgroundColor: Colors.transparent,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: AppTheme.primaryPurple,
-          unselectedItemColor: Colors.white54,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
-              label: 'Explore',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.local_fire_department),
-              label: 'Parties',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: 'Calendar',
-            ),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-        ),
+          ),
+          SizedBox(height: bottomPadding),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavItem(int index, IconData icon, String label) {
+    final isSelected = index == currentIndex;
+    final color = isSelected ? AppTheme.primaryPurple : Colors.white54;
+
+    return InkWell(
+      onTap: () => onTap(index),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: color),
+          const SizedBox(height: 4),
+          Text(label, style: TextStyle(color: color, fontSize: 12)),
+        ],
       ),
     );
   }

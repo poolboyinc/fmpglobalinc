@@ -36,8 +36,12 @@ class _MainScaffoldState extends State<MainScaffold> {
       ProfilePage(onNavigateToTab: _onPageChanged),
     ];
 
+    // Only one Scaffold in the entire app structure
     return Scaffold(
-      body: pages[_currentIndex],
+      backgroundColor: Colors.black,
+      extendBody: true, // Important for bottom nav bar
+      resizeToAvoidBottomInset: false,
+      body: IndexedStack(index: _currentIndex, children: pages),
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _currentIndex,
         onTap: _onPageChanged,

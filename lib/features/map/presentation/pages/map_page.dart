@@ -64,40 +64,39 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          MapWidget(
-            styleUri: MapboxConfig.styleUrl,
-            key: const ValueKey("mapWidget"),
-            mapOptions: MapOptions(
-              contextMode: ContextMode.UNIQUE,
-              pixelRatio: MediaQuery.of(context).devicePixelRatio,
-            ),
-            cameraOptions: CameraOptions(
-              center: Point(
-                coordinates: Position(
-                  MapboxConfig.initialLongitude,
-                  MapboxConfig.initialLatitude,
-                ),
-              ),
-              zoom: MapboxConfig.initialZoom,
-            ),
-            onMapCreated: _onMapCreated,
+    // Remove the Scaffold, just return the content
+    return Stack(
+      children: [
+        MapWidget(
+          styleUri: MapboxConfig.styleUrl,
+          key: const ValueKey("mapWidget"),
+          mapOptions: MapOptions(
+            contextMode: ContextMode.UNIQUE,
+            pixelRatio: MediaQuery.of(context).devicePixelRatio,
           ),
-          const MapSearchBar(),
-          if (selectedVenue != null)
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: VenueBottomSheet(
-                venue: selectedVenue!,
-                onClose: () => setState(() => selectedVenue = null),
+          cameraOptions: CameraOptions(
+            center: Point(
+              coordinates: Position(
+                MapboxConfig.initialLongitude,
+                MapboxConfig.initialLatitude,
               ),
             ),
-        ],
-      ),
+            zoom: MapboxConfig.initialZoom,
+          ),
+          onMapCreated: _onMapCreated,
+        ),
+        const MapSearchBar(),
+        if (selectedVenue != null)
+          Positioned(
+            bottom: 80, // Add space for bottom nav bar
+            left: 0,
+            right: 0,
+            child: VenueBottomSheet(
+              venue: selectedVenue!,
+              onClose: () => setState(() => selectedVenue = null),
+            ),
+          ),
+      ],
     );
   }
 }
