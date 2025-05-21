@@ -23,9 +23,6 @@ class AuthScreen extends StatelessWidget {
           );
         } else if (state is Authenticated) {
           Navigator.pushReplacementNamed(context, Routes.main);
-          // Navigate to main app screen after successful authentication
-          // TODO: Replace with your main screen route
-          // Navigator.pushReplacementNamed(context, '/home');
         }
       },
       child: BlocBuilder<AuthBloc, AuthState>(
@@ -34,7 +31,6 @@ class AuthScreen extends StatelessWidget {
             backgroundColor: Colors.black,
             body: Stack(
               children: [
-                // Custom curved background
                 CustomPaint(
                   size: Size(
                     MediaQuery.of(context).size.width,
@@ -48,7 +44,6 @@ class AuthScreen extends StatelessWidget {
                       color: AppTheme.primaryPurple,
                     ),
                   ),
-                // Content
                 SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -77,7 +72,7 @@ class AuthScreen extends StatelessWidget {
                               isGoogle: true,
                               onPressed:
                                   state is AuthLoading
-                                      ? () {} // Provide empty callback when loading
+                                      ? () {}
                                       : () {
                                         context.read<AuthBloc>().add(
                                           GoogleSignInRequested(),
@@ -88,9 +83,7 @@ class AuthScreen extends StatelessWidget {
                             SocialAuthButton(
                               text: 'Continue with Apple',
                               isGoogle: false,
-                              onPressed: () {
-                                // Implement Apple sign in
-                              },
+                              onPressed: () {},
                             ),
                             const SizedBox(height: 16),
                             const Padding(

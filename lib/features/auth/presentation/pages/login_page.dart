@@ -41,16 +41,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
           );
         } else if (state is AuthError) {
-          // Hide loading indicator if shown
           Navigator.of(context).pop();
-          // Show error message
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.message), backgroundColor: Colors.red),
           );
         } else if (state is Authenticated) {
-          // Hide loading indicator if shown
           Navigator.of(context).pop();
-          // Navigate to menu page
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder:
@@ -84,7 +80,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const Spacer(),
-                      // Logo and App Name
                       const Column(
                         children: [
                           Icon(
@@ -104,12 +99,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       const Spacer(),
-                      // Login Form
                       Form(
                         key: _formKey,
                         child: Column(
                           children: [
-                            // Email Field
                             TextFormField(
                               controller: _emailController,
                               style: const TextStyle(color: Colors.white),
@@ -143,7 +136,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                             ),
                             const SizedBox(height: 16),
-                            // Password Field
                             TextFormField(
                               controller: _passwordController,
                               style: const TextStyle(color: Colors.white),
@@ -191,7 +183,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                             ),
                             const SizedBox(height: 24),
-                            // Login Button
                             CustomButton(
                               text: 'Log In',
                               onPressed: () {
@@ -210,7 +201,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 24),
-                      // OR Divider
                       Row(
                         children: [
                           Expanded(
@@ -235,7 +225,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       const SizedBox(height: 24),
-                      // Social Login
                       CustomButton(
                         text: 'Continue with Google',
                         onPressed: () {
@@ -245,7 +234,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         backgroundColor: Colors.white,
                       ),
                       const SizedBox(height: 24),
-                      // Sign Up Link
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -270,7 +258,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       const Spacer(),
-                      // Terms and Conditions
                       Padding(
                         padding: const EdgeInsets.only(bottom: 24),
                         child: Text(

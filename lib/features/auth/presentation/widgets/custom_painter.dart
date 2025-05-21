@@ -18,18 +18,15 @@ class CurvedPainter extends CustomPainter {
 
     final path = Path();
 
-    // Start from the top left
     path.moveTo(0, size.height * 0.45);
 
-    // Create a smooth curve
     path.quadraticBezierTo(
-      size.width * 0.5, // Control point x
-      size.height * 0.35, // Control point y
-      size.width, // End point x
-      size.height * 0.45, // End point y
+      size.width * 0.5,
+      size.height * 0.35,
+      size.width,
+      size.height * 0.45,
     );
 
-    // Complete the shape
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();

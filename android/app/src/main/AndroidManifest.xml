@@ -2,6 +2,7 @@
  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
+        android:enableOnBackInvokedCallback="true"
         android:label="fmpglobalinc"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

@@ -30,7 +30,6 @@ class ProfilePage extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 40),
-                    // Profile Image
                     Hero(
                       tag: 'profile_image',
                       child: Container(
@@ -50,7 +49,6 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    // User Name
                     Text(
                       state.user.name ?? 'User',
                       style: const TextStyle(
@@ -60,48 +58,37 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 40),
-                    // Floating Bubble Buttons
                     Expanded(
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
-                          // Party History Button
                           Positioned(
                             left: 30,
                             top: 50,
                             child: FloatingBubbleButton(
                               title: 'Party History',
                               icon: Icons.history,
-                              onTap: () {
-                                // Handle party history
-                              },
+                              onTap: () {},
                             ),
                           ),
-                          // Upcoming Parties Button
                           Positioned(
                             right: 40,
                             top: 120,
                             child: FloatingBubbleButton(
                               title: 'Upcoming Parties',
                               icon: Icons.calendar_today,
-                              onTap: () {
-                                // Handle upcoming parties
-                              },
+                              onTap: () {},
                             ),
                           ),
-                          // Edit Profile Button
                           Positioned(
                             left: 60,
                             top: 220,
                             child: FloatingBubbleButton(
                               title: 'Edit Profile',
                               icon: Icons.edit,
-                              onTap: () {
-                                // Handle edit profile
-                              },
+                              onTap: () {},
                             ),
                           ),
-                          // 🔥 Sign Out Button (new)
                           Positioned(
                             right: 30,
                             bottom: 30,
@@ -122,10 +109,6 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            /*bottomNavigationBar: CustomBottomNavBar(
-              currentIndex: 3, // Profile is the 4th tab (index 3)
-              onTap: onNavigateToTab,
-            ),*/
           );
         }
         if (state is Unauthenticated) {
@@ -177,7 +160,6 @@ class _FloatingBubbleButtonState extends State<FloatingBubbleButton>
       end: 0.95,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
-    // Add a small floating animation
     _controller.repeat(reverse: true);
   }
 

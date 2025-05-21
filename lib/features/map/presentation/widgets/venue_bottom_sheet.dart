@@ -1,4 +1,3 @@
-// lib/features/map/presentation/widgets/venue_bottom_sheet.dart
 import 'package:flutter/material.dart';
 import '../../data/models/venue_model.dart';
 
@@ -6,11 +5,8 @@ class VenueBottomSheet extends StatelessWidget {
   final VenueModel venue;
   final VoidCallback onClose;
 
-  const VenueBottomSheet({
-    Key? key,
-    required this.venue,
-    required this.onClose,
-  }) : super(key: key);
+  const VenueBottomSheet({Key? key, required this.venue, required this.onClose})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {

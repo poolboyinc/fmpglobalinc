@@ -1,4 +1,3 @@
-// lib/features/map/data/models/venue_model.dart
 class VenueModel {
   final String id;
   final String name;
@@ -26,7 +25,6 @@ class VenueModel {
     required this.images,
   });
 
-  // Mock data
   static List<VenueModel> getMockVenues() {
     return [
       VenueModel(
@@ -42,7 +40,6 @@ class VenueModel {
         reviews: 347,
         images: ['assets/images/morrison1.jpg'],
       ),
-      // Add more mock venues
     ];
   }
 }

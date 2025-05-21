@@ -1,4 +1,3 @@
-// lib/features/auth/data/datasources/auth_remote_datasource.dart
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart' as apple_sign_in;
@@ -25,9 +24,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final firebase_auth.FirebaseAuth firebaseAuth;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  AuthRemoteDataSourceImpl({
-    required this.firebaseAuth,
-  });
+  AuthRemoteDataSourceImpl({required this.firebaseAuth});
 
   @override
   Future<UserModel> signInWithGoogle() async {
@@ -44,8 +41,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         idToken: googleAuth.idToken,
       );
 
-      final userCredential =
-          await firebaseAuth.signInWithCredential(credential);
+      final userCredential = await firebaseAuth.signInWithCredential(
+        credential,
+      );
       return UserModel.fromFirebaseUser(userCredential.user!);
     } catch (e) {
       throw Exception('Failed to sign in with Google: ${e.toString()}');
@@ -55,22 +53,24 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<UserModel> signInWithApple() async {
     try {
-      final appleCredential =
-          await apple_sign_in.SignInWithApple.getAppleIDCredential(
+      final appleCredential = await apple_sign_in
+          .SignInWithApple.getAppleIDCredential(
         scopes: [
           apple_sign_in.AppleIDAuthorizationScopes.email,
           apple_sign_in.AppleIDAuthorizationScopes.fullName,
         ],
       );
 
-      final oauthCredential =
-          firebase_auth.OAuthProvider('apple.com').credential(
+      final oauthCredential = firebase_auth.OAuthProvider(
+        'apple.com',
+      ).credential(
         idToken: appleCredential.identityToken,
         accessToken: appleCredential.authorizationCode,
       );
 
-      final userCredential =
-          await firebaseAuth.signInWithCredential(oauthCredential);
+      final userCredential = await firebaseAuth.signInWithCredential(
+        oauthCredential,
+      );
       return UserModel.fromFirebaseUser(userCredential.user!);
     } catch (e) {
       throw Exception('Failed to sign in with Apple: ${e.toString()}');
@@ -105,10 +105,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         password: password,
       );
 
-      // Update user profile with name
       await userCredential.user?.updateDisplayName(name);
 
-      // Reload user to get updated profile
       await userCredential.user?.reload();
       final updatedUser = firebaseAuth.currentUser;
 
@@ -121,10 +119,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> signOut() async {
     try {
-      await Future.wait([
-        firebaseAuth.signOut(),
-        _googleSignIn.signOut(),
-      ]);
+      await Future.wait([firebaseAuth.signOut(), _googleSignIn.signOut()]);
     } catch (e) {
       throw Exception('Failed to sign out: ${e.toString()}');
     }

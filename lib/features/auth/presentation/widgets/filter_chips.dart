@@ -1,4 +1,3 @@
-// lib/features/menu/presentation/widgets/filter_chips.dart
 import 'package:flutter/material.dart';
 import 'package:fmpglobalinc/core/config/theme.dart';
 

@@ -1,4 +1,3 @@
-// lib/core/config/routes.dart
 import 'package:flutter/material.dart';
 import 'package:fmpglobalinc/features/auth/presentation/pages/auth_page.dart';
 import 'package:fmpglobalinc/features/auth/presentation/pages/calendar_page.dart';

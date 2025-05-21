@@ -47,6 +47,8 @@ dependencies:
   sign_in_button: ^3.2.0
   mapbox_maps_flutter: ^2.7.0
   flutter_dotenv: ^5.2.1
+  internet_connection_checker: ^3.0.1
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +77,9 @@ flutter:
      - assets/google_logo.png
      - assets/logo_png_test_1.png
      - .env
+     - assets/venues/morrison.png
+     - assets/venues/house.png
+     - assets/venues/jazz.png
 
   fonts:
      - family: Coolvetica

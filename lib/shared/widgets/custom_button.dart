@@ -1,4 +1,3 @@
-// lib/shared/widgets/custom_button.dart
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -6,7 +5,7 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Widget? icon;
   final Color? backgroundColor;
-  final Color? textColor; // Add this parameter
+  final Color? textColor;
   final bool isOutlined;
 
   const CustomButton({
@@ -15,7 +14,7 @@ class CustomButton extends StatelessWidget {
     required this.onPressed,
     this.icon,
     this.backgroundColor,
-    this.textColor, // Add this parameter
+    this.textColor,
     this.isOutlined = false,
   }) : super(key: key);
 

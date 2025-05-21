@@ -1,4 +1,3 @@
-// lib/features/menu/presentation/widgets/party_card.dart
 import 'package:flutter/material.dart';
 import 'package:fmpglobalinc/core/config/theme.dart';
 
@@ -17,7 +16,6 @@ class PartyCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // Placeholder image
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Container(
@@ -28,7 +26,6 @@ class PartyCard extends StatelessWidget {
               ),
             ),
           ),
-          // Favorite button
           Positioned(
             top: 8,
             right: 8,
@@ -37,7 +34,6 @@ class PartyCard extends StatelessWidget {
               onPressed: () {},
             ),
           ),
-          // Party info
           Positioned(
             bottom: 0,
             left: 0,

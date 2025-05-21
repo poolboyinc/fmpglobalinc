@@ -1,4 +1,3 @@
-// lib/core/theme/theme.dart
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -20,10 +19,7 @@ class AppTheme {
         fontSize: 32,
         fontWeight: FontWeight.bold,
       ),
-      bodyLarge: TextStyle(
-        color: Colors.white,
-        fontSize: 16,
-      ),
+      bodyLarge: TextStyle(color: Colors.white, fontSize: 16),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,

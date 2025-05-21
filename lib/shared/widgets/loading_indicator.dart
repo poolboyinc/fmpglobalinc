@@ -1,5 +1,3 @@
-// lib/shared/widgets/loading_indicator.dart
-
 import 'package:flutter/material.dart';
 import 'package:fmpglobalinc/core/config/theme.dart';
 

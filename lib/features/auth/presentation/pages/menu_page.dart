@@ -10,7 +10,6 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // No Scaffold here, just return the content
     return Container(
       color: Colors.black,
       child: Column(
@@ -32,7 +31,6 @@ class MenuPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   _buildSection('Nearby'),
                   _buildPartyList(context),
-                  // Add extra bottom padding to account for nav bar
                   const SizedBox(height: 80),
                 ],
               ),

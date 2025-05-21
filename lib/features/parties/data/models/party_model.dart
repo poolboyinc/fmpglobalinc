@@ -1,0 +1,148 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fmpglobalinc/features/parties/domain/entities/party.dart';
+
+class PartyModel extends PartyEntity {
+  const PartyModel({
+    required String id,
+    required String name,
+    required String description,
+    required String venue,
+    required String genre,
+    required double latitude,
+    required double longitude,
+    required DateTime date,
+    required String startTime,
+    required String endTime,
+    required String imageUrl,
+    required String logoUrl,
+    required double rating,
+    required int reviewCount,
+    required String priceCategory,
+    required List<String> tags,
+    bool isFeatured = false,
+  }) : super(
+         id: id,
+         name: name,
+         description: description,
+         venue: venue,
+         genre: genre,
+         latitude: latitude,
+         longitude: longitude,
+         date: date,
+         startTime: startTime,
+         endTime: endTime,
+         imageUrl: imageUrl,
+         logoUrl: logoUrl,
+         rating: rating,
+         reviewCount: reviewCount,
+         priceCategory: priceCategory,
+         tags: tags,
+         isFeatured: isFeatured,
+       );
+
+  factory PartyModel.fromJson(Map<String, dynamic> json) {
+    return PartyModel(
+      id: json['id'] ?? '',
+      name: json['name'] ?? '',
+      description: json['description'] ?? '',
+      venue: json['venue'] ?? '',
+      genre: json['genre'] ?? '',
+      latitude: (json['latitude'] as num?)?.toDouble() ?? 0.0,
+      longitude: (json['longitude'] as num?)?.toDouble() ?? 0.0,
+      date: (json['date'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      startTime: json['startTime'] ?? '',
+      endTime: json['endTime'] ?? '',
+      imageUrl: json['imageUrl'] ?? '',
+      logoUrl: json['logoUrl'] ?? '',
+      rating: (json['rating'] as num?)?.toDouble() ?? 0.0,
+      reviewCount: (json['reviewCount'] as num?)?.toInt() ?? 0,
+      priceCategory: json['priceCategory'] ?? '€',
+      tags: List<String>.from(json['tags'] ?? []),
+      isFeatured: json['isFeatured'] ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'venue': venue,
+      'genre': genre,
+      'latitude': latitude,
+      'longitude': longitude,
+      'date': Timestamp.fromDate(date),
+      'startTime': startTime,
+      'endTime': endTime,
+      'imageUrl': imageUrl,
+      'logoUrl': logoUrl,
+      'rating': rating,
+      'reviewCount': reviewCount,
+      'priceCategory': priceCategory,
+      'tags': tags,
+      'isFeatured': isFeatured,
+    };
+  }
+
+  static List<PartyModel> getMockParties() {
+    return [
+      PartyModel(
+        id: '1',
+        name: 'Morrison Pub',
+        description:
+            'Live music and great atmosphere every Friday night! Join us for a night of fun.',
+        venue: 'Morrison Pub',
+        genre: 'Balkan',
+        latitude: 44.8165,
+        longitude: 20.4643,
+        date: DateTime.now().add(const Duration(days: 1)),
+        startTime: '23:00',
+        endTime: '03:00',
+        imageUrl: 'https://picsum.photos/seed/morrison/800/500',
+        logoUrl: 'assets/venues/morrison.png',
+        rating: 4.5,
+        reviewCount: 347,
+        priceCategory: '€€',
+        tags: ['Live Music', 'Popular'],
+        isFeatured: true,
+      ),
+      PartyModel(
+        id: '2',
+        name: 'House Party',
+        description:
+            'The best electronic music in town! Our resident DJs will make you dance all night long.',
+        venue: 'Club House',
+        genre: 'Electronic',
+        latitude: 44.8205,
+        longitude: 20.4693,
+        date: DateTime.now().add(const Duration(days: 2)),
+        startTime: '00:00',
+        endTime: '06:00',
+        imageUrl: 'https://picsum.photos/seed/house/800/500',
+        logoUrl: 'assets/venues/house.png',
+        rating: 4.7,
+        reviewCount: 521,
+        priceCategory: '€€€',
+        tags: ['Electronic', 'DJ'],
+      ),
+      PartyModel(
+        id: '3',
+        name: 'Jazz Night',
+        description: 'Smooth jazz and fine drinks in an intimate atmosphere.',
+        venue: 'Jazz Club',
+        genre: 'Jazz',
+        latitude: 44.8115,
+        longitude: 20.4583,
+        date: DateTime.now().add(const Duration(days: 3)),
+        startTime: '21:00',
+        endTime: '01:00',
+        imageUrl: 'https://picsum.photos/seed/jazz/800/500',
+        logoUrl: 'assets/venues/jazz.png',
+        rating: 4.9,
+        reviewCount: 189,
+        priceCategory: '€€',
+        tags: ['Jazz', 'Live Music'],
+      ),
+    ];
+  }
+}

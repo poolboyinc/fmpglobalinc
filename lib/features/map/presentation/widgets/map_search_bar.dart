@@ -1,4 +1,3 @@
-// lib/features/map/presentation/widgets/map_search_bar.dart
 import 'package:flutter/material.dart';
 
 class MapSearchBar extends StatelessWidget {
@@ -8,7 +7,11 @@ class MapSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(
-          16, MediaQuery.of(context).padding.top + 16, 16, 0),
+        16,
+        MediaQuery.of(context).padding.top + 16,
+        16,
+        0,
+      ),
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.3),
         borderRadius: BorderRadius.circular(25),
